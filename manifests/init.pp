@@ -219,12 +219,12 @@ class cassandra (
     }
     'Debian': {
       $config_file_require = [ User['cassandra'], File[$config_path_recurse] ]
-      $config_file_before  = Package['cassandra']
-      $config_path_recurse_require = []
+      $config_file_before  = []
+      $config_path_recurse_require = Package['cassandra']
       $dc_rack_properties_file_require = [ User['cassandra'], File[$config_path_recurse] ]
-      $dc_rack_properties_file_before  = Package['cassandra']
+      $dc_rack_properties_file_before  = []
       $data_dir_require = File[$config_file]
-      $data_dir_before = Package['cassandra']
+      $data_dir_before = []
 
       if $cassandra_9822 {
         file { '/etc/init.d/cassandra':
